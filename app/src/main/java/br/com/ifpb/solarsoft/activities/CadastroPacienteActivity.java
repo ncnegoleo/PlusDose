@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,8 +35,11 @@ import br.com.ifpb.solarsoft.util.WarningDialogHelper;
 import br.com.ifpb.solarsoft.util.DateUtil;
 import br.com.ifpb.solarsoft.security.ValidateForm;
 
-public class CadastroPacienteActivity extends ActionBarActivity
+public class CadastroPacienteActivity extends AppCompatActivity
         implements DatePickerDialog.OnDateSetListener {
+
+    private final String TAG = "LOG";
+    private Toolbar aToolbar;
 
     Paciente paciente;
     PacienteDao pacienteDao;
@@ -56,6 +61,12 @@ public class CadastroPacienteActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_paciente);
+
+        aToolbar = (Toolbar) findViewById(R.id.tb_main);
+        aToolbar.setTitle("Main Activity");
+        aToolbar.setSubtitle("Just Subtitle");
+        setSupportActionBar(aToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         pacienteDao = new PacienteDao(this);
         paciente = new Paciente();

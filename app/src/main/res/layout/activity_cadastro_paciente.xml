@@ -7,7 +7,18 @@
     android:weightSum="1"
     tools:context="br.com.ifpb.solarsoft.activities.PacienteDetailsActivity">
 
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tb_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <LinearLayout
+        android:layout_below="@+id/tb_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -150,31 +161,28 @@
         android:id="@+id/fab_camera_paciente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_gravity="right"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
         android:src="@drawable/ic_camera"
         fab:fab_colorNormal="@color/primary"
         fab:fab_colorPressed="@color/primary_pressed"
         fab:fab_colorRipple="@color/ripple"
-        android:onClick="captureByCamera"/>
+        android:onClick="captureByCamera"
+        android:layout_below="@+id/tb_main"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <com.melnykov.fab.FloatingActionButton
+        android:layout_marginTop="10dp"
         android:id="@+id/fab_imagem_paciente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/fab_camera_paciente"
-        android:layout_alignStart="@+id/fab_camera_paciente"
-        android:layout_below="@+id/fab_camera_paciente"
         android:layout_gravity="right"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:src="@drawable/ic_images"
         fab:fab_colorNormal="@color/primary"
         fab:fab_colorPressed="@color/primary_pressed"
         fab:fab_colorRipple="@color/ripple"
-        android:onClick="loadImage"/>
+        android:onClick="loadImage"
+        android:layout_below="@+id/fab_camera_paciente"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

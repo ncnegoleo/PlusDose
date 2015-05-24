@@ -3,6 +3,8 @@ package br.com.ifpb.solarsoft.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +23,10 @@ import br.com.ifpb.solarsoft.adapters.PacienteAdapter;
 import br.com.ifpb.solarsoft.entities.Paciente;
 import br.com.ifpb.solarsoft.sql.PacienteDao;
 
-public class PacientesActivity extends ActionBarActivity {
+public class PacientesActivity extends AppCompatActivity {
+
+    private final String TAG = "LOG";
+    private Toolbar aToolbar;
 
     PacienteDao pacienteDao;
     ListView lvPacients;
@@ -33,6 +38,11 @@ public class PacientesActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pacientes);
+
+        aToolbar = (Toolbar) findViewById(R.id.tb_main);
+        aToolbar.setTitle("Main Activity");
+        aToolbar.setSubtitle("Just Subtitle");
+        setSupportActionBar(aToolbar);
 
         pacienteDao = new PacienteDao(this);
 

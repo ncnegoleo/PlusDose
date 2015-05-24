@@ -3,17 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
     android:layout_height="fill_parent" android:padding="2dp"
     tools:context="br.com.ifpb.solarsoft.activities.PacientesActivity"
-    android:background="#ffffff"
     android:gravity="left">
-
-<!--
-    <ImageView
-        android:id="@+id/img_paciente"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:contentDescription="desc"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"/> -->
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_paciente"
