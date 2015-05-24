@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:padding="2dp"
+    tools:context="br.com.ifpb.solarsoft.activities.PacientesActivity"
+    android:background="#ffffff"
+    android:gravity="left">
+
+<!--
+    <ImageView
+        android:id="@+id/img_paciente"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="desc"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/> -->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_paciente"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/no_image"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Paciente"
+        android:id="@+id/tv_nome_paciente"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_toRightOf="@+id/img_paciente"
+        android:paddingBottom="10dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="idade do paciente"
+        android:id="@+id/tv_idade_paciente"
+        android:paddingLeft="15dp"
+        android:layout_alignLeft="@id/tv_nome_paciente"
+        android:layout_below="@id/tv_nome_paciente"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+
+</RelativeLayout>

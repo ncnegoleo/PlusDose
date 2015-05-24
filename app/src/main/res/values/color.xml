@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#ff4ec0ee</color>
+    <color name="primary_pressed">#ff3b6aee</color>
+    <color name="ripple">#ff4ec0ee</color>
+    <color name="babyblue">#00a8ec</color>
+    <color name="dark_babyblue">#d4003a67</color>
+</resources>

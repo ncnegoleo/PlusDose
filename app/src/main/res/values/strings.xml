@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">+Dose</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_pacientes">Pessoas</string>
+    <string name="title_activity_paciente_details">Detalhes</string>
+    <string name="title_activity_cadastro">Cadastro</string>
+
+    <string name="nome">Nome</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="data_nascimento">Data de Nascimento</string>
+    <string name="Sexo">sexo</string>
+
+    <string name="menu_add_label">Adicionar</string>
+    <string name="menu_confirm_label">Confirmar</string>
+    <string name="menu_cancel_label">Cancelar</string>
+    <string name="abrv_masculino">M</string>
+    <string name="abrv_feminino">F</string>
+
+    <string name="confirmar">Confirmar</string>
+    <string name="alerta">Alerta</string>
+    <string name="confirmar_cadastro_paciente">Deseja realmente salvar o paciente?</string>
+    <string name="confirmar_delecao_paciente">Deseja realmente deletar o paceiente?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="alerta_data_futura">A data de nascimento nao pode ser
+        maior que a data atual!
+    </string>
+    <string name="alerta_campos_vazios">Preencha todos os tampos corretamente!</string>
+    <string name="ok">OK</string>
+
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+    <string name="visualizar_vacinas">Visualizar Vacinas</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_remove">Remover</string>
+
+    <string name="expressao_paciente">paciente</string>
+    <string name="expressao_deletar">deletado!</string>
+    <string name="expressao_deletar_fem">deletada!</string>
+    <string name="expressao_salvar">salvo!</string>
+    <string name="expressao_salvar_fem">salva!</string>
+    <string name="expressao_dose_aplicada">Tomou em:</string>
+    <string name="title_activity_vacinas">Vacinas</string>
+
+    <string name="expressao_toast_paciente_lista1">Adicione novos pacientes clicando em </string>
+    <string name="expressao_toast_paciente_lista2"> na barra superior.</string>
+
+    <string name="hello_world">Hello world!</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_aplicacao_activty">Vacinas</string>
+
+</resources>
