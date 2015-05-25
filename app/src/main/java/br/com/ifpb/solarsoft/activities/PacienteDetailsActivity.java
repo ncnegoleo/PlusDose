@@ -1,7 +1,6 @@
 package br.com.ifpb.solarsoft.activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +15,9 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 
 import br.com.ifpb.solarsoft.R;
+import br.com.ifpb.solarsoft.entities.Aplicacao;
 import br.com.ifpb.solarsoft.entities.Paciente;
+import br.com.ifpb.solarsoft.sql.AplicacaoDao;
 import br.com.ifpb.solarsoft.sql.PacienteDao;
 import br.com.ifpb.solarsoft.util.PacienteUtil;
 import br.com.ifpb.solarsoft.util.WarningDialogHelper;
@@ -26,8 +27,8 @@ public class PacienteDetailsActivity extends AppCompatActivity {
     private final String TAG = "LOG";
     private Toolbar aToolbar;
 
-    PacienteDao pacienteDao;
-    Paciente paciente;
+    private PacienteDao pacienteDao;
+    private Paciente paciente;
     private Integer pacienteId;
 
     private ImageView imgeFoto;
@@ -48,6 +49,13 @@ public class PacienteDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         pacienteDao = new PacienteDao(this);
+
+
+        AplicacaoDao aplicacaoDao = new AplicacaoDao(this);
+        Aplicacao apli = new Aplicacao();
+        apli.setDataAplicacao("12/10/2012");
+        apli.setAplicada(0);
+        aplicacaoDao.save(apli, 1, 1);
 
         componentsInit();
 
@@ -144,8 +152,8 @@ public class PacienteDetailsActivity extends AppCompatActivity {
         return new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(), getString(R.string.expressao_paciente) + " "
-                        + paciente.getNome() + " " + getString(R.string.expressao_deletar),
+                Toast.makeText(getApplicationContext(), getString(R.string.info_paciente) + " "
+                        + paciente.getNome() + " " + getString(R.string.info_deletar),
                         Toast.LENGTH_SHORT).show();
 
                 pacienteDao.delete(paciente);

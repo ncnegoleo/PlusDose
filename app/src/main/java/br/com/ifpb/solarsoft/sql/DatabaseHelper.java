@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
 
     private static final String NOME_DB = "plusdosedb";
-    private static final int VERSAO_DB = 17;
+    private static final int VERSAO_DB = 19;
 
 
     public DatabaseHelper(Context context) {

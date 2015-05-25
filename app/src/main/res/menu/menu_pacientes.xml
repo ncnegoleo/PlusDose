@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/ac_add_paciente"
-        android:title="@string/menu_add_label"
+        android:title="@string/action_add"
         android:icon="@drawable/ic_add"
         android:orderInCategory="100"
         app:showAsAction="ifRoom|withText" />

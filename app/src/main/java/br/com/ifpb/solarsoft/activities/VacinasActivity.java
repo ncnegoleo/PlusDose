@@ -45,16 +45,14 @@ public class VacinasActivity extends ActionBarActivity {
             items.add(app);
         }
 
-        SectionItem si1 = new SectionItem();
-        si1.setTitle("menos que 1 ano");
+        SectionItem si1 = new SectionItem("menos que 1 ano");
 
         Aplicacao apd1 = new Aplicacao();
         apd1.setNomeDose("Dose Única");
         apd1.setNomeVacina("BCG");
         apd1.setDataAplicacao("12/10/2014");
 
-        SectionItem si2 = new SectionItem();
-        si2.setTitle("2 anos e 3 meses");
+        SectionItem si2 = new SectionItem("2 anos e 3 meses");
 
         Aplicacao apd2 = new Aplicacao();
         apd2.setNomeDose("1ª Dose");
@@ -86,11 +84,6 @@ public class VacinasActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

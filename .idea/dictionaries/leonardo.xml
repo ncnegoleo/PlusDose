@@ -2,10 +2,18 @@
   <dictionary name="leonardo">
     <words>
       <w>aplicacao</w>
+      <w>aplicação</w>
       <w>ação</w>
       <w>botão</w>
+      <w>diálogos</w>
+      <w>formulários</w>
+      <w>informações</w>
       <w>nascimmento</w>
       <w>sobrenome</w>
+      <w>subtitulo</w>
+      <w>subtitulos</w>
+      <w>titulo</w>
+      <w>titulos</w>
     </words>
   </dictionary>
 </component>

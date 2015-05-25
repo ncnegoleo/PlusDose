@@ -35,9 +35,9 @@ public class AplicacaoDao extends DataBase {
 
     public Aplicacao update(Aplicacao aplicacao, int pacienteId, int doseId) {
 
-        db.execSQL("UPDATE TABLE aplicacao " +
+        db.execSQL("UPDATE aplicacao " +
                 "SET data_aplicacao = " + aplicacao.getDataAplicacao() + ", " +
-                "aplicada = " + aplicacao.isAplicada() + ", " +
+                "aplicada = " + aplicacao.isAplicada() + " " +
                 "WHERE _id = " + aplicacao.getId() + " AND " +
                 "id_paciente = " + pacienteId + " AND " +
                 "id_dose = " + doseId);
@@ -52,7 +52,8 @@ public class AplicacaoDao extends DataBase {
         Cursor cursor = db.rawQuery(
                 "SELECT " +
                     "aplicacao._id, aplicacao.data_aplicacao, " +
-                    "aplicacao.aplicada, dose.nome, vacina.nome " +
+                    "aplicacao.aplicada, dose.nome, vacina.nome, " +
+                    "dose._id, dose.indicacao " +
                 "FROM dose INNER JOIN vacina " +
                     "ON dose.id_vacina = vacina. _id " +
                 "INNER JOIN aplicacao " +
@@ -70,7 +71,8 @@ public class AplicacaoDao extends DataBase {
             aplicacao.setAplicada(cursor.getInt(2));
             aplicacao.setNomeDose(cursor.getString(3));
             aplicacao.setNomeVacina(cursor.getString(4));
-
+            aplicacao.setIdDose(cursor.getInt(5));
+            aplicacao.setIndicacao(cursor.getDouble(6));
             aplicacoes.add(aplicacao);
 
             cursor.moveToNext();

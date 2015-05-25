@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -38,8 +37,9 @@ import br.com.ifpb.solarsoft.security.ValidateForm;
 public class CadastroPacienteActivity extends AppCompatActivity
         implements DatePickerDialog.OnDateSetListener {
 
-    private final String TAG = "LOG";
     private Toolbar aToolbar;
+    private final int TITULO = R.string.title_activity_cadastro;
+    private final int SUBTITULO = R.string.subtitle_activity_cadastro;
 
     Paciente paciente;
     PacienteDao pacienteDao;
@@ -62,11 +62,7 @@ public class CadastroPacienteActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_paciente);
 
-        aToolbar = (Toolbar) findViewById(R.id.tb_main);
-        aToolbar.setTitle("Main Activity");
-        aToolbar.setSubtitle("Just Subtitle");
-        setSupportActionBar(aToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        createToolbar();
 
         pacienteDao = new PacienteDao(this);
         paciente = new Paciente();
@@ -82,6 +78,20 @@ public class CadastroPacienteActivity extends AppCompatActivity
                 fillForm();
             }
         }
+    }
+
+    // Cria a toolbar da Activity
+    private void createToolbar() {
+
+        aToolbar = (Toolbar) findViewById(R.id.tb_main);
+        aToolbar.setTitle(getString(TITULO));
+        aToolbar.setSubtitle(getString(SUBTITULO));
+
+        // Inicia o suporte ao toobar como uma actionbar
+        setSupportActionBar(aToolbar);
+
+        // Mostra o botão UP
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void componentsInit() {
@@ -261,8 +271,8 @@ public class CadastroPacienteActivity extends AppCompatActivity
                     pacienteDao.create(paciente);
                 }
 
-                Toast.makeText(getApplicationContext(), getString(R.string.expressao_paciente) + " "
-                        + paciente.getNome() + " " + getString(R.string.expressao_salvar),
+                Toast.makeText(getApplicationContext(), getString(R.string.info_paciente) + " "
+                        + paciente.getNome() + " " + getString(R.string.info_salvar),
                         Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), PacientesActivity.class);

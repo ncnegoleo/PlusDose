@@ -2,7 +2,6 @@ package br.com.ifpb.solarsoft.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -51,7 +50,7 @@ public class PacientesActivity extends AppCompatActivity {
         final ArrayList<Paciente> pacientes = pacienteDao.getAll();
 
         if(pacientes.size() <= 0) {
-            showToastTip();
+            //showToastTip();
         }
 
         lvPacients.setAdapter(new PacienteAdapter(this, pacientes));
@@ -102,12 +101,12 @@ public class PacientesActivity extends AppCompatActivity {
                 (ViewGroup) findViewById(R.id.toast_layout_root));
 
         TextView text = (TextView) layout.findViewById(R.id.toastText);
-        text.setText(R.string.expressao_toast_paciente_lista1);
+        text.setText(R.string.info_toast_paciente_lista_1);
         TextView text2 = (TextView) layout.findViewById(R.id.toastText2);
-        text2.setText(getString(R.string.expressao_toast_paciente_lista2));
+        text2.setText(getString(R.string.info_toast_paciente_lista_2));
 
         Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setGravity(Gravity.TOP, 0, 10);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();

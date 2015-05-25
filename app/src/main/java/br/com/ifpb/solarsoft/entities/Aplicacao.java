@@ -13,6 +13,8 @@ public class Aplicacao implements Item {
     private int pacienteId ;
     private String nomeDose;
     private String nomeVacina;
+    private int idDose;
+    private double indicacao;
 
     public int getId() {
         return id;
@@ -62,6 +64,22 @@ public class Aplicacao implements Item {
         this.nomeVacina = nomeVacina;
     }
 
+    public double getIndicacao() {
+        return indicacao;
+    }
+
+    public void setIndicacao(double indicacao) {
+        this.indicacao = indicacao;
+    }
+
+    public int getIdDose() {
+        return idDose;
+    }
+
+    public void setIdDose(int idDose) {
+        this.idDose = idDose;
+    }
+
     @Override
     public boolean isSection() {
         return false;
@@ -76,6 +94,8 @@ public class Aplicacao implements Item {
                 ", pacienteId=" + pacienteId +
                 ", nomeDose='" + nomeDose + '\'' +
                 ", nomeVacina='" + nomeVacina + '\'' +
+                ", idDose=" + idDose +
+                ", indicacao=" + indicacao +
                 '}';
     }
 }
