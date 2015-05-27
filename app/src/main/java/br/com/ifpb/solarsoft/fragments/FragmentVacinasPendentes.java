@@ -74,7 +74,7 @@ public class FragmentVacinasPendentes extends Fragment {
         aplicacaoDao  = new AplicacaoDao(getActivity());
         lvPendentes.setAdapter(new VacinaAdapter(getActivity(), items));
 
-        ArrayList<Aplicacao> aplicacaos = aplicacaoDao.getAplicacaoByPaciente(1);
+        ArrayList<Aplicacao> aplicacaos = aplicacaoDao.getAplicacaoByPaciente(1, 0);
 
         for (Aplicacao app : aplicacaos) {
             if(app.getIndicacao() <= 0.1 && !menordeUmMes) {

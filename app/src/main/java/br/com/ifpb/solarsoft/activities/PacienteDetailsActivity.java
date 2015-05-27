@@ -50,13 +50,6 @@ public class PacienteDetailsActivity extends AppCompatActivity {
 
         pacienteDao = new PacienteDao(this);
 
-
-        AplicacaoDao aplicacaoDao = new AplicacaoDao(this);
-        Aplicacao apli = new Aplicacao();
-        apli.setDataAplicacao("12/10/2012");
-        apli.setAplicada(0);
-        aplicacaoDao.save(apli, 1, 1);
-
         componentsInit();
 
         // Reucupera o um conteudo passado por intent.
@@ -77,7 +70,19 @@ public class PacienteDetailsActivity extends AppCompatActivity {
         Log.e("Paciente: ", paciente.toString());
 
         fillDetails();
+
+        if(paciente.getListado() == 0) {
+            saveAllDoses();
+            paciente.setListado(1);
+            pacienteDao.update(paciente);
+        }
     }
+
+    private void saveAllDoses() {
+        AplicacaoDao aplicacaoDao = new AplicacaoDao(this);
+        aplicacaoDao.saveAllDoses(pacienteId);
+    }
+
 
     /**
      * Inicia os componentes do layout

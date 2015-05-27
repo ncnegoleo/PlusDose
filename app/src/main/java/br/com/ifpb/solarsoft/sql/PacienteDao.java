@@ -30,6 +30,7 @@ public class PacienteDao extends DataBase implements GenericDao<Paciente, Intege
         valores.put("data_nasc", sdf.format(paciente.getDataDeNascimento()));
         valores.put("sexo", paciente.getSexo() + "");
         valores.put("foto", paciente.getFoto());
+        valores.put("listado", paciente.getListado());
 
         db.insert(DatabaseHelper.pacienteTable.getTableName(), null, valores);
     }
@@ -44,6 +45,7 @@ public class PacienteDao extends DataBase implements GenericDao<Paciente, Intege
         valores.put("data_nasc", sdf.format(paciente.getDataDeNascimento()));
         valores.put("sexo", paciente.getSexo() + "");
         valores.put("foto", paciente.getFoto());
+        valores.put("listado", paciente.getListado());
 
         db.update(DatabaseHelper.pacienteTable.getTableName(), valores, "_id = ?",
                 new String[]{""+paciente.getId()});
@@ -80,6 +82,7 @@ public class PacienteDao extends DataBase implements GenericDao<Paciente, Intege
                 catch (ParseException e) {}
                 paciente.setDataDeNascimento(parsedDate);
                 paciente.setFoto(cursor.getString(5));
+                paciente.setListado(cursor.getInt(6));
             } while (cursor.moveToNext());
         }
 
@@ -109,7 +112,7 @@ public class PacienteDao extends DataBase implements GenericDao<Paciente, Intege
                 catch (ParseException e) {}
                 paciente.setDataDeNascimento(parsedDate);
                 paciente.setFoto(cursor.getString(5));
-
+                paciente.setListado(cursor.getInt(6));
                 pacientes.add(paciente);
             } while (cursor.moveToNext());
         }

@@ -33,15 +33,6 @@ public class AplicacaoActivty extends AppCompatActivity {
 
         createToolbar();
 
-//        if(savedInstanceState == null) {
-//            FragmentVacinasPendentes fragVP = new FragmentVacinasPendentes();
-//            FragmentVacinasTomadas fragVT = new FragmentVacinasTomadas();
-//
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.add(R.id.pager, fragVP, "frag_vp");
-//            ft.commit();
-//        }
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         adapterViewPager = new CustomPagerAdapter(fm);
         viewPager.setAdapter(adapterViewPager);

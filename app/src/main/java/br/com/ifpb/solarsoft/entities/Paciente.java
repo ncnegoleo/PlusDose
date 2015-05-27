@@ -18,6 +18,7 @@ public class Paciente {
     private Date dataDeNascimento;
     private char sexo;
     private ArrayList<Vacina> vacinas;
+    private int listado;
 
     public Paciente() {
     }
@@ -78,6 +79,14 @@ public class Paciente {
         this.vacinas = vacinas;
     }
 
+    public int getListado() {
+        return listado;
+    }
+
+    public void setListado(int listado) {
+        this.listado = listado;
+    }
+
     @Override
     public String toString() {
         return "Paciente{" +
@@ -87,6 +96,8 @@ public class Paciente {
                 ", sobrenome='" + sobrenome + '\'' +
                 ", dataDeNascimento=" + dataDeNascimento +
                 ", sexo=" + sexo +
+                ", vacinas=" + vacinas +
+                ", listado=" + listado +
                 '}';
     }
 }

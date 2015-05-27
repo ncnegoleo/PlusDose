@@ -20,8 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
 
     private static final String NOME_DB = "plusdosedb";
-    private static final int VERSAO_DB = 19;
-
+    private static final int VERSAO_DB = 32;
 
     public DatabaseHelper(Context context) {
         super(context, NOME_DB, null, VERSAO_DB);
@@ -41,13 +40,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(doseTable.create());
         db.execSQL(aplicacaoTable.create());
 
+        db.execSQL("" +
+                "CREATE TRIGGER main.delete_paciente BEFORE DELETE ON paciente FOR EACH ROW " +
+                "BEGIN " +
+                "DELETE FROM aplicacao WHERE aplicacao.id_paciente = old._id; " +
+                "END;");
+
         insertVacinas();
         insertDoses();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
         db.execSQL(pacienteTable.drop());
         db.execSQL(vacinaTable.drop());
         db.execSQL(doseTable.drop());
@@ -64,9 +68,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SSColumn pacienteSexo           = new SSColumn("sexo", SSColumn.TEXT, false);
         SSColumn pacienteDataNascimento = new SSColumn("data_nasc", SSColumn.TEXT, false);
         SSColumn pacienteFoto           = new SSColumn("foto", SSColumn.TEXT, false);
+        SSColumn pacienteListado        = new SSColumn("listado",SSColumn.INTEGER, false);
 
         pacienteTable = new SSTable("paciente", pacientePk, pacienteNome,
-                pacienteSobrenome, pacienteSexo, pacienteDataNascimento, pacienteFoto);
+                pacienteSobrenome, pacienteSexo, pacienteDataNascimento, pacienteFoto, pacienteListado);
     }
 
     private void buildVacinaTable() {
@@ -102,8 +107,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         aplicacaoTable = new SSTable("aplicacao", aplicacaoPk, aplicacaoDataApl,
                 aplicacaoAplicada, aplicacaoFkPaciente, aplicacaoFkDose);
 
-        aplicacaoTable.setJoin("fk_aplicacao_paciente", pacienteTable.getTableName(),
-                aplicacaoFkPaciente.getColumn(), "_id", SSTable.CASCADE, SSTable.NO_ACTION);
+//        aplicacaoTable.setJoin("fk_aplicacao_paciente", pacienteTable.getTableName(),
+//                aplicacaoFkPaciente.getColumn(), "_id", SSTable.CASCADE, SSTable.NO_ACTION);
 
         aplicacaoTable.setJoin("fk_aplicacao_dose", doseTable.getTableName(),
                 aplicacaoFkDose.getColumn(), "_id", SSTable.NO_ACTION, SSTable.NO_ACTION);
@@ -112,8 +117,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private void insertVacinas() {
 
         String[][] vacinaData = new String[][] {
-                {"Hepatite B", "descricao"}, // Hepatite B
-                {"BCG", "descricao"} // BCG
+                {"BCG", "descricao"}, // BCG (ID 1)
+                {"Hepatite B", "descricao"}, // Hepatite B (ID 2)
+                {"Penta", "descricao"}, // Penta (ID 3)
+                {"DTP", "descricao"}, // DTP
+                {"VIP", "descricao"}, // VIP (ID 4)
+                {"VOP", "descricao"}, // VOP (ID 5)
+                {"Pneumo 10", "descricao"}, // Peneumococica 10 (ID 6)
+                {"Rotavírus", "descricao"}, // Oral Rotavírus (ID 7)
+                {"Meningo C", "descricao"}, // Menigo Conjugada C (ID 8)
+                {"Febre Amarela", "descricao"}, // Febre Aramarela (ID 9)
+                {"Hepatite A", "descricao"}, // Hepatite A (ID 10)
+                {"Tríplice Viral", "descricao"}, // Tríplice Viral (ID 11)
+                {"Tetra Viral", "descricao"}, // Tetra Viral (ID 12)
+                {"HPV", "descrcao"}, // HPV (ID 13)
+                {"Dupla Adulto", "descricao"}, // Dupla Adulto (ID 14)
+                {"dTpa", "descricao"} // dTpa (ID 15)
         };
 
         for(int i = 0; i < vacinaData.length; i++) {
@@ -125,9 +144,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private void insertDoses() {
 
         String[][] doseData = new String[][] {
-                {"1ª Dose", "0.1", "1"}, // 1ª Dose de Hepatite B
-                {"2ª Dose", "0.5", "1"}, // 2ª Dose de Hepatite B
-                {"3ª Dose", "1.0", "1"}  // 3ª Dose de Hepatite B
+                // {'nome da dose' , faixa-etária, id da vacina}
+                {"Dose Única", "0.0", "1"}, // 1ª Dose de Hepatite B
+                {"1ª Dose", "0.0", "2"}, // 1ª Dose de Hepatite B
+                {"2ª Dose", "19.0", "2"}, // 2ª Dose de Hepatite B
+                {"3ª Dose", "29.0", "2"},  // 3ª Dose de Hepatite B
+                {"1ª Dose", "0.2", "3"}, // 1ª Dose de Penta
+                {"2ª Dose", "0.4", "3"}, // 2ª Dose de Penta
+                {"3ª Dose", "0.6", "3"}, // 3ª Dose de Penta
+                {"1º Reforço", "1.3", "4"}, // 1º Reforço de DTP
+                {"2º Reforço", "4.0", "4"}, // 2º Reforço de DTP
+                {"1ª Dose", "0.2", "5"}, // 1ª Dose de VIP
+                {"2ª Dose", "0.4", "5"}, // 2ª Dose de Vip
+                {"3ª Dose", "0.6", "6"} // 3ª Dose de Vop
         };
 
         for (int i = 0; i < doseData.length; i++) {

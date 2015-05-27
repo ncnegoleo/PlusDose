@@ -27,7 +27,9 @@ import java.util.Date;
 import java.util.UUID;
 
 import br.com.ifpb.solarsoft.R;
+import br.com.ifpb.solarsoft.entities.Aplicacao;
 import br.com.ifpb.solarsoft.entities.Paciente;
+import br.com.ifpb.solarsoft.sql.AplicacaoDao;
 import br.com.ifpb.solarsoft.sql.PacienteDao;
 import br.com.ifpb.solarsoft.util.PacienteUtil;
 import br.com.ifpb.solarsoft.util.WarningDialogHelper;
@@ -243,6 +245,7 @@ public class CadastroPacienteActivity extends AppCompatActivity
                 paciente.setSexo(sexo);
                 paciente.setDataDeNascimento(dataNasc);
                 paciente.setFoto(uriFoto);
+                paciente.setListado(0);
 
                 new WarningDialogHelper(this, getString(R.string.confirmar),
                         getString(R.string.confirmar_cadastro_paciente), getString(R.string.sim),
